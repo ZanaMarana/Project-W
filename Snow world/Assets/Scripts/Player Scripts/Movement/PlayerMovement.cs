@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 1f;
+    public float sprintSpeed = 1.5f;
     public float jumpForce = 100f;
     float sprinting;
 
@@ -15,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Ground Check")]
     bool grounded;
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
 
     public Transform orientation;
 
@@ -47,21 +51,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        speedControl();
-    }
-
-    public void flipFlopDrag()
-    {
-        if (!grounded)
+        grounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        if (grounded)
         {
             rb.drag = groundDrag;
-            grounded = true;
         }
         else
         {
             rb.drag = 0;
-            grounded = false;
         }
+        speedControl();
     }
 
     // Update is called once per frame
@@ -73,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
     private void movePlayer()
     {
         sprinting = sprint.action.ReadValue<float>();
-        Debug.Log(sprinting);
         Vector2 moveValue = move.action.ReadValue<Vector2>();
         moveDir = orientation.forward * moveValue.y + orientation.right * moveValue.x;
 
