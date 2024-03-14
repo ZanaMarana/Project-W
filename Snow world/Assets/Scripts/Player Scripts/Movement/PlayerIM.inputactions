@@ -34,7 +34,7 @@
                 },
                 {
                     "name": "Shoot",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "1f60319a-467b-4a41-b198-74e215d492ad",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -47,7 +47,7 @@
                     "id": "c2fcd44a-1526-4f08-ae92-d4027470951c",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 }
             ],
@@ -166,7 +166,7 @@
                     "name": "",
                     "id": "fc5a0a14-be39-47b8-a104-922b87bc033a",
                     "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
@@ -177,7 +177,7 @@
                     "name": "",
                     "id": "d95a38c4-c338-4a16-afca-4b11c670dbd4",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
