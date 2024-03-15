@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     public bool grounded;
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundCheckRadius = 0.4f;
     public LayerMask groundMask;
 
     public Transform orientation;
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        grounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        grounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
         speedControl();
     }
 
