@@ -159,7 +159,7 @@ MonoBehaviour:
   addedGrav: 0.45
   grounded: 0
   groundCheck: {fileID: 2618116088438465866}
-  groundDistance: 0.3
+  groundCheckRadius: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -232,6 +232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3157844431306057990}
+  - component: {fileID: 2621633728195574024}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -256,6 +257,26 @@ Transform:
   - {fileID: 7086074553198394041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2621633728195574024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4007720644050423842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &4848008054767764853
 GameObject:
   m_ObjectHideFlags: 0
