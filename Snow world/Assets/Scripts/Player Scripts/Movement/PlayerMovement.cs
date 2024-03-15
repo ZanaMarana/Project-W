@@ -12,10 +12,10 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 100f;
     float sprinting;
 
-    public float groundDrag;
+    public float addedGrav; 
 
     [Header("Ground Check")]
-    bool grounded;
+    public bool grounded;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         grounded = true;
-        rb.drag = groundDrag;
         sprinting = 0;
     }
 
@@ -52,21 +51,16 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        if (grounded)
-        {
-            rb.drag = groundDrag;
-        }
-        else
-        {
-            rb.drag = 0;
-        }
         speedControl();
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
         movePlayer();
+        if (!grounded)
+        {
+            addGravity();
+        }
     }
 
     private void movePlayer()
@@ -78,6 +72,12 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
     }
 
+    private void addGravity()
+    {
+        float yVelocity = rb.velocity.y - addedGrav;
+        rb.velocity = new Vector3 (rb.velocity.x, yVelocity, rb.velocity.z);
+    }
+
     private void speedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -87,6 +87,8 @@ public class PlayerMovement : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * moveSpeed;
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
         }
+
+        
     }
 
     private void Jump(InputAction.CallbackContext obj)
