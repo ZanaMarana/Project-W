@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public static int chosenMultiplayerMode = -1;
+    public static int chosenMultiplayerMode = -1; //Host will equal 1, Join will equal 2
     public void HostButton()
     {
         chosenMultiplayerMode = 1;
-        SceneManager.LoadSceneAsync("SampleScene");
+        SceneManager.LoadSceneAsync("Game");
     }
 
     public void JoinButton()
     {
         chosenMultiplayerMode = 2;
-        SceneManager.LoadSceneAsync("SampleScene");
+        SceneManager.LoadSceneAsync("Game");
     }
 }
