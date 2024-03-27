@@ -11,11 +11,13 @@ public class GameManager : MonoBehaviour
         if(MainMenuManager.chosenMultiplayerMode == 1)
         {
             NetworkManager.Singleton.StartHost();
+            Debug.Log("Game Manager started host");
         }
         else
         {
             NetworkManager.Singleton.StartClient();
+            Debug.Log("Game Manager started cloient");
         }
-        Debug.Log("Game Manager was called");
+        
     }
 }

@@ -20,14 +20,14 @@ public class PlayerCam : NetworkBehaviour
 
     private void Start()
     {
-        if (!IsOwner) { return; }
+        if (!IsLocalPlayer) return; 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void Update()
     {
-        if (!IsOwner) { return; }
+        if (!IsLocalPlayer) return;
         Vector2 lookVector = look.action.ReadValue<Vector2>();
 
         xRotation -= lookVector.y * 0.2f * sensX;

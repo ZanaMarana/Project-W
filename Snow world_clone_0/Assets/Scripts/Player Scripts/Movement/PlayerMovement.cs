@@ -33,34 +33,35 @@ public class PlayerMovement : NetworkBehaviour
     
     private void Start()
     {
+        if (!IsLocalPlayer) return;
         grounded = true;
         sprinting = 0;
     }
 
     private void OnEnable()
     {
-        if (!IsOwner) { return; }
+        if (!IsLocalPlayer) return; 
         jump.action.started += Jump;
        //sprint.action.started += Sprint;
     }
 
     private void OnDisable()
     {
-        if (!IsOwner) { return; }
+        if (!IsLocalPlayer) return; 
         jump.action.started -= Jump;
         //sprint.action.started -= Sprint;
     }
 
     private void Update()
     {
-        if (!IsOwner) { return; }
+        if (!IsLocalPlayer) return; 
         grounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundMask);
         speedControl();
     }
 
     private void FixedUpdate()
     {
-        if (!IsOwner) { return; }
+        if (!IsLocalPlayer) return; 
         movePlayer();
         if (!grounded)
         {
